@@ -8,6 +8,12 @@ spec:
   containers:
     - name: kubernetes-intro
       image: emergy/kubernetes-intro
+      readinessProbe:
+        httpGet:
+          path: /index.html
+          port: 8000
+      livenessProbe:
+        tcpSocket: { port: 8000 }
       volumeMounts:
         - name: app
           mountPath: /app
