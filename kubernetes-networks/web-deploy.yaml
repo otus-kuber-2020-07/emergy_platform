@@ -10,7 +10,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 100%
+      maxUnavailable: 0
       maxSurge: 100%
   template:
     metadata:
@@ -21,15 +21,15 @@ spec:
       containers:
         - name: kubernetes-intro
           image: emergy/kubernetes-intro
-          volumeMounts:
-            - name: app
-              mountPath: /app
           readinessProbe:
             httpGet:
-              path: index.html
+              path: /index.html
               port: 8000
           livenessProbe:
             tcpSocket: { port: 8000 }
+          volumeMounts:
+            - name: app
+              mountPath: /app
       initContainers:
         - name: init-web
           image: busybox:1.31.0
@@ -40,4 +40,3 @@ spec:
       volumes:
         - name: app
           emptyDir: {}
-
