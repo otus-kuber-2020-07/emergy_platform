@@ -1,6 +1,19 @@
 # emergy_platform
 emergy Platform repository
 
+kubernetes-volumes
+
+- похоже, что строчка `export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"` в самом начале ДЗ, устарела и имеет ошибку.
+- развернул kubernetes-volumes/minio-statefulset.yaml, kubernetes-volumes/minio-headless-service.yaml
+- посмотрел describe и прочее
+
+
+
+
+
+
+
+
 kubernetes-networks
 - побавил проверки в kubernetes-intro\web-pod.yaml
 
